@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700&display=swap" rel="stylesheet" />
+
+  <style>
+    body {
+      font-family: 'Nunito', sans-serif;
+    }
+
+    h1 {
+      color: #38b6b4;
+      text-align: center;
+      margin-top: 90px;
+      font-weight: bold;
+      line-height: 60px;
+      font-size: 300%;
+    }
+
+    .navbar {
+      background-color: white;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar-brand img {
+      max-height: 60px;
+    }
+
+    .nav-link {
+      font-weight: 600;
+      color: #000 !important;
+      letter-spacing: 0.5px;
+      padding: 0.75rem 1rem;
+    }
+
+    .nav-link:hover {
+      color: #f65c7a !important;
+    }
+
+    .nav-item.dropdown .dropdown-menu {
+      border-radius: 0;
+      margin-top: 0.5rem;
+    }
+
+    .navbar-nav .nav-link.active {
+      color: #f65c7a !important;
+    }
+
+    #para {
+      text-align: center;
+      margin-top: 30px;
+      font-size: larger;
+    }
+
+    .pro {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 30px;
+    }
+
+    .pro img {
+      width: 80%;
+      height: auto;
+      border-top-left-radius: 20px;
+      border-bottom-right-radius: 50px;
+      border-radius: 10px;
+      height: 30%;
+    }
+
+    .box-overlay {
+      position: absolute;
+      left: 13%;
+      top: 29%;
+      background: white;
+      padding: 35px;
+      border-radius: 12px;
+      max-width: 420px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      z-index: 2;
+    }
+
+    .box-overlay h2 {
+      color: #38b6b4;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    .box-overlay p {
+      color: #333;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .box-overlay p a {
+      color: #d81b60;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .box-overlay button {
+      margin-top: 20px;
+      background-color: #d81b60;
+      border: none;
+      color: white;
+      padding: 12px 25px;
+      border-radius: 25px;
+      font-weight: bold;
+      font-size: 14px;
+      cursor: pointer;
+      text-transform: uppercase;
+    }
+
+    .box-overlay button:hover {
+      background-color: #c2185b;
+    }
+
+    .foot {
+      position: relative;
+      margin-top: 60px;
+      height: 400px;
+      overflow: hidden;
+    }
+
+    .foot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: blur(3px);
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+
+    .foot-content {
+      position: relative;
+      z-index: 2;
+      padding: 130px 0 0 60px;
+    }
+
+    .foot-content h2 {
+      color: #feec68;
+      text-align: left;
+      font-size: 35px;
+      font-weight: bold;
+    }
+
+    .foot-content button {
+      margin-top: 20px;
+    }
+
+    .footer {
+      background-color: rgb(234, 198, 157);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="{{ url_for('main.home') }}">
+        <img src="{{ url_for('static', filename='india-logo.jpg') }}" alt="Logo">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link {% if request.endpoint == 'main.home' %}active{% endif %}" href="{{ url_for('main.home') }}">Home</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle {% if request.endpoint == 'main.about' %}active{% endif %}" href="{{ url_for('main.about') }}" role="button" data-bs-toggle="dropdown">About Us</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Our Philosophy</a></li>
+              <li><a class="dropdown-item" href="#">What Makes Us Different?</a></li>
+              <li><a class="dropdown-item" href="#">Gallery</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link {% if request.endpoint == 'main.custom' %}active{% endif %}" href="{{ url_for('main.custom') }}">Custom Tours</a></li>
+          <li class="nav-item"><a class="nav-link {% if request.endpoint == 'main.travel_blog' %}active{% endif %}" href="{{ url_for('main.travel_blog') }}">Travel Blog</a></li>
+          <li class="nav-item"><a class="nav-link {% if request.endpoint == 'main.contact' %}active{% endif %}" href="{{ url_for('main.contact') }}">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <h1> custom tours to India <br> Designed by insiders. </h1>
+
+  <p id="para">
+    Our custom tours to India are carefully designed by a team of <br>
+    people who know, and love, India. We hand-pick every destination <br>
+    every hotel, every activity, every guide to give you the best, most <br>
+    unique, culturally authentic, and sustainable choice available. Our <br>
+    custom tours to India are made with love … and designed for your <br>
+    budget, dates, preferences, and interests.
+  </p>
+
+  <!-- Tour 1 -->
+  <div class="pro">
+    <div class="box-overlay">
+      <h2>Golden Triangle Tour</h2>
+      <p>
+        The <a href="#">Golden Triangle</a> is India’s leading tourism circuit — for a reason. This “triangle” of
+        destinations includes the historic city of <strong>Delhi</strong>, which boasts three UNESCO World Heritage
+        sites; <strong>Agra</strong>, home of the <strong>Taj Mahal</strong>, and <strong>Jaipur</strong>, the Pink
+        City.
+      </p>
+      <button>Click Here for Itinerary</button>
+    </div>
+    <img src="{{ url_for('static', filename='tajmahl.jpg') }}" alt="Taj Mahal" />
+  </div>
+
+  <!-- Tour 2 -->
+  <div class="pro">
+    <div class="box-overlay">
+      <h2>Shopping in India Tour</h2>
+      <p>
+        India is a shopper’s paradise. There is an astonishing variety of dazzling clothes, fabrics, shawls, shoes,
+        jewellery, spices, rugs, pottery, furniture, and much, much more to buy in India. The tour is designed to
+        be a fun and interactive cultural experience.
+      </p>
+      <button>Click Here for Shopping Tour</button>
+    </div>
+    <img src="{{ url_for('static', filename='Solo-in-Style-North-India-tour.jpg') }}" alt="Shopping in India" />
+  </div>
+
+  <!-- Tour 3 -->
+  <div class="pro">
+    <div class="box-overlay">
+      <h2>Fabulous Rajasthan: Land of Kings & Queens</h2>
+      <p>
+        Fabulous Rajasthan: Land of Kings and Queens is about immersion into the world of classical India. The itinerary
+        includes the Golden Triangle and diving into historic Delhi,
+        visiting the Taj Mahal,
+      </p>
+      <button>CONTACT US FOR itinerary</button>
+    </div>
+    <img src="{{ url_for('static', filename='hawamahel.png') }}" alt="Rajasthan" />
+  </div>
+
+  <!-- ✅ Final blurred footer section -->
+  <div class="foot">
+    <img src="{{ url_for('static', filename='arch-rajasthan.jpg') }}" alt="" />
+    <div class="foot-content">
+      <h2>
+        Contact Us For More Information about India for <br />
+        Beginners custom tours.
+      </h2>
+      <button type="button" class="btn btn-warning" style="color: white;">Contact Us</button>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+<!-- footer -->
+<section class="footer">
+  <div class="container">
+    <footer class="py-5">
+      <div class="row">
+        <div class="col-2">
+          <h5>Section</h5>
+          <ul class="nav flex-column">
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+          </ul>
+        </div>
+
+        <div class="col-2">
+          <h5>Section</h5>
+          <ul class="nav flex-column">
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+          </ul>
+        </div>
+
+        <div class="col-2">
+          <h5>Section</h5>
+          <ul class="nav flex-column">
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+          </ul>
+        </div>
+
+        <div class="col-4 offset-1">
+          <form>
+            <h5>Subscribe to our newsletter</h5>
+            <p>Monthly digest of whats new and exciting from us.</p>
+            <div class="d-flex w-100 gap-2">
+              <label for="newsletter1" class="visually-hidden">Email address</label>
+              <input id="newsletter1" type="text" class="form-control" placeholder="Email address">
+              <button class="btn btn-primary" type="button">Subscribe</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-between py-4 my-4 border-top">
+        <p>© 2021 Company, Inc. All rights reserved.</p>
+        <ul class="list-unstyled d-flex">
+          <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24">
+                <use xlink:href="#twitter"></use>
+              </svg></a></li>
+          <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24">
+                <use xlink:href="#instagram"></use>
+              </svg></a></li>
+          <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24">
+                <use xlink:href="#facebook"></use>
+              </svg></a></li>
+        </ul>
+      </div>
+    </footer>
+  </div>
+</section>
+</body>
+
+</html>
