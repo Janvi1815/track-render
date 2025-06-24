@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="google-site-verification" content="k7TqFfUujuLG16FuHnmNAEDffolhwr9RmtUk94JHik4" />
+  <title>Rajasthan Hero Section</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Nunito', sans-serif;
+    }
+
+    .navbar {
+      background-color: white;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar-brand img {
+      max-height: 60px;
+    }
+
+    .nav-link {
+      font-weight: 600;
+      color: #000 !important;
+      letter-spacing: 0.5px;
+      padding: 0.75rem 1rem;
+    }
+
+    .nav-link:hover {
+      color: #f65c7a !important;
+    }
+
+    .nav-item.dropdown .dropdown-menu {
+      border-radius: 0;
+      margin-top: 0.5rem;
+    }
+
+    .navbar-nav .nav-link.active {
+      color: #f65c7a !important;
+    }
+
+    .hero {
+      position: relative;
+      height: 75vh;
+      background: url("{{ url_for('static', filename='hawa-mahal-6156123_1280.jpg') }}") center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 107, 107, 0.5);
+      z-index: 1;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      bottom: -1px; left: 0;
+      width: 100%; height: 100px;
+      background-color: #f5d9c4;
+      clip-path: polygon(0 100%, 100% 60%, 100% 100%, 0% 100%);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .hero-content h2 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .hero-content h1 {
+      font-size: 4rem;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+
+    .hero-content .btn {
+      background-color: #f5427b;
+      border: none;
+      border-radius: 50px;
+      padding: 12px 30px;
+      font-size: 1.1rem;
+      color: white;
+      transition: background-color .3s;
+    }
+
+    .hero-content .btn:hover {
+      background-color: #d9376e;
+    }
+
+    .footer {
+        background-color: rgb(234, 198, 157);
+    }
+
+    @media (max-width: 768px) {
+      .hero-content h1 { font-size: 2.5rem; }
+      .hero-content h2 { font-size: 1.3rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+      <img src="{{ url_for('static', filename='india-logo.jpg') }}" alt="Logo">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ url_for('main.home') }}">Home</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="{{ url_for('main.about') }}" role="button" id="dropdown">About Us</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Our Philosophy</a></li>
+            <li><a class="dropdown-item" href="#">What Makes Us Different?</a></li>
+            <li><a class="dropdown-item" href="#">Gallery</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('main.custom') }}">Custom Tours</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Group Tours</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('main.travel_blog') }}">Travel Blog</a></li>
+
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('main.contact') }}">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="hero-content">
+    <h2>Welcome To India!</h2>
+    <h1>India For Beginners<br>Custom Tours</h1>
+    <a href="#about" class="btn">ABOUT US</a>
+  </div>
+</section>
+
+
+
+<!-- Mehndi Section -->
+<section style="background-color: #f5d9c4; padding: 60px 0;">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6 text-center">
+        <img src="{{ url_for('static', filename='SS-Mendhi-1200-px.jpg') }}" alt="Mehndi Hands" class="img-fluid rounded" style="max-width: 90%; border-radius: 10px;">
+      </div>
+      <div class="col-md-6">
+        <h2 style="color: #38b6b4; font-weight: bold;">We Are Here To Hold<br>Your Hand In India</h2>
+        <p><strong>India for Beginners</strong> custom tours are especially designed for solo female travellers, first time visitors to India, and people with a “beginner’s mind” who want to see India in a new way, with a focus on sustainability and authenticity.</p>
+        <a href="#" class="btn btn-lg" style="background-color: #f5427b; color: white; border-radius: 50px;">OUR PHILOSOPHY</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Solo Traveller Video Section -->
+  <section style="position: relative; background: url('hawa-mahal-6156123_1280.jpg') center/cover no-repeat; padding: 80px 0; margin-top: 60px; font-family: 'Nunito', sans-serif;">
+    <div style="background-color: rgba(0, 107, 107, 0.7); position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;"></div>
+
+    <div class="container position-relative" style="z-index: 2;">
+      <div class="row align-items-center">
+        <div class="col-md-6 text-white">
+          <h2 style="font-weight: 700;">Do You Dream Of Travel In India? Are You A Solo Traveller?</h2>
+          <p class="mt-4">
+            We know that travel in India is not for everyone. But if you feel called, we highly encourage you to go!
+            Travel in India is a life-changing experience. And we can help you have a safe and smooth trip.
+            We run custom tours for many solo travelers, it is our specialty. We choose safe, reliable, and trustworthy
+            accommodation, guides, and drivers, and you will have a tour manager available at all times.
+            He will be coordinating everything for you, and keeping you informed.
+            You will travel alone, but will be supported by many caring people!
+          </p>
+          <a href="https://youtu.be/0ljZj7lr-K8" target="_blank" class="btn btn-lg mt-3" style="background-color: #f5427b; color: white; border-radius: 50px;">CONTACT US</a>
+        </div>
+        <div class="col-md-6 text-center mt-4 mt-md-0">
+          <div class="ratio ratio-16x9 rounded shadow" style="overflow: hidden; border-radius: 15px;">
+            <iframe src="https://www.youtube.com/embed/0ljZj7lr-K8" title="Solo Traveller Video" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- Contact Us Section -->
+  <section style="padding: 80px 0; font-family: 'Nunito', sans-serif; background-color: #f9f9f9;">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-4 p-0">
+         <img src="{{ url_for('static', filename='Adobe-Jaipur-shopping.jpg') }}" alt="Jaipur Market" class="img-fluid w-100 h-100" style="object-fit: cover;">
+
+        </div>
+        <div class="col-md-4 d-flex justify-content-center align-items-center" style="background-color: white;">
+          <div class="p-4 shadow" style="max-width: 100%; border-radius: 8px;">
+            <h3 style="color: #38b6b4; font-weight: bold;">Contact Us</h3>
+            <p>Contact us and start planning your dream trip to India today!</p>
+
+            <div class="d-flex align-items-start mb-3">
+              <div class="me-3">
+                <div class="bg-danger bg-opacity-10 p-2 rounded-circle">
+                  <img src="https://img.icons8.com/ios-filled/24/ff4b7d/new-post.png" alt="email">
+                </div>
+              </div>
+              <div>
+                <h6 style="color: #38b6b4; margin-bottom: 2px;">Email Us</h6>
+                <p class="mb-0">info@indiaforbeginners.com</p>
+              </div>
+            </div>
+
+            <div class="d-flex align-items-start mb-3">
+              <div class="me-3">
+                <div class="bg-danger bg-opacity-10 p-2 rounded-circle">
+                  <img src="https://img.icons8.com/ios-filled/24/ff4b7d/marker.png" alt="map">
+                </div>
+              </div>
+              <div>
+                <h6 style="color: #38b6b4; margin-bottom: 2px;">Address</h6>
+                <p class="mb-0">Delhi, India</p>
+              </div>
+            </div>
+
+            <div class="d-flex align-items-start">
+              <div class="me-3">
+                <div class="bg-danger bg-opacity-10 p-2 rounded-circle">
+                  <img src="https://img.icons8.com/ios-filled/24/ff4b7d/phone.png" alt="call">
+                </div>
+              </div>
+              <div>
+                <h6 style="color: #38b6b4; margin-bottom: 2px;">Call Us</h6>
+                <p class="mb-0">(91) 9368998201</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 p-0">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d224345.83926424636!2d77.06889912637966!3d28.527280343099316!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce374684fd4ff%3A0x5d9b5f4bbfdacb21!2sDelhi%2C%20India!5e0!3m2!1sen!2sin!4v1718966711326!5m2!1sen!2sin" 
+            width="100%" 
+            height="100%" 
+            style="border:0; min-height: 500px;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- footer -->
+    <section class="footer">
+        <div class="container">
+            <footer class="py-5">
+                <div class="row">
+                    <div class="col-2">
+                        <h5>Section</h5>
+                        <ul class="nav flex-column">
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-2">
+                        <h5>Section</h5>
+                        <ul class="nav flex-column">
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-2">
+                        <h5>Section</h5>
+                        <ul class="nav flex-column">
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-4 offset-1">
+                        <form>
+                            <h5>Subscribe to our newsletter</h5>
+                            <p>Monthly digest of whats new and exciting from us.</p>
+                            <div class="d-flex w-100 gap-2">
+                                <label for="newsletter1" class="visually-hidden">Email address</label>
+                                <input id="newsletter1" type="text" class="form-control" placeholder="Email address"
+                                    fdprocessedid="i29t8e">
+                                <button class="btn btn-primary" type="button" fdprocessedid="mlp91t">Subscribe</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-between py-4 my-4 border-top">
+                    <p>© 2021 Company, Inc. All rights reserved.</p>
+                    <ul class="list-unstyled d-flex">
+                        <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24">
+                                    <use xlink:href="#twitter"></use>
+                                </svg></a></li>
+                        <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24">
+                                    <use xlink:href="#instagram"></use>
+                                </svg></a></li>
+                        <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24">
+                                    <use xlink:href="#facebook"></use>
+                                </svg></a></li>
+                    </ul>
+                </div>
+            </footer>
+        </div>
+    </section>
+<!-- ✅ Just add this line before closing </body> tag -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Travel Website</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Nunito', sans-serif;
+        }
+
+        .navbar {
+            background-color: white;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand img {
+            max-height: 60px;
+        }
+
+        .nav-link {
+            font-weight: 600;
+            color: #000 !important;
+            letter-spacing: 0.5px;
+            padding: 0.75rem 1rem;
+        }
+
+        .nav-link:hover {
+            color: #f65c7a !important;
+        }
+
+        .nav-item.dropdown .dropdown-menu {
+            border-radius: 0;
+            margin-top: 0.5rem;
+        }
+
+        .navbar-nav .nav-link.active {
+            color: #f65c7a !important;
+        }
+
+        .travel-blog-header {
+            background-color: rgb(210, 145, 93);
+            padding: 80px 0;
+            width: 100%;
+            margin-bottom: 0;
+        }
+
+        .travel-blog-header h1 {
+            color: #38b6b4;
+            font-size: 3rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .card {
+            width: 24rem;
+            flex: 0 0 auto;
+        }
+
+        .Main {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            background-color: #ebcdad;
+            margin-top: -5px;
+            padding: 50px 20px;
+        }
+
+        #card1 {
+            padding-left: -30px;
+        }
+
+        .footer {
+            background-color: rgb(234, 198, 157);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('main.home') }}">
+                <img src="{{ url_for('static', filename='india-logo.jpg') }}" alt="Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link {% if request.endpoint == 'main.home' %}active{% endif %}"
+                            href="{{ url_for('main.home') }}">Home</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle {% if request.endpoint == 'main.about' %}active{% endif %}"
+                            href="{{ url_for('main.about') }}" role="button" data-bs-toggle="dropdown">About Us</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Our Philosophy</a></li>
+                            <li><a class="dropdown-item" href="#">What Makes Us Different?</a></li>
+                            <li><a class="dropdown-item" href="#">Gallery</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link {% if request.endpoint == 'main.custom' %}active{% endif %}"
+                            href="{{ url_for('main.custom') }}">Custom Tours</a></li>
+                    <li class="nav-item"><a
+                            class="nav-link {% if request.endpoint == 'main.travel_blog' %}active{% endif %}"
+                            href="{{ url_for('main.travel_blog') }}">Travel Blog</a></li>
+                    <li class="nav-item"><a class="nav-link {% if request.endpoint == 'main.contact' %}active{% endif %}"
+                            href="{{ url_for('main.contact') }}">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Travel Blog Header -->
+    <section class="travel-blog-header">
+        <div class="container text-center">
+            <h1>Travel Blog</h1>
+        </div>
+    </section>
+
+    <!-- Travel Blog Cards -->
+    <div class="Main">
+        <div class="card">
+            <img src="{{ url_for('static', filename='tajmahl.jpg') }}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">India Travel Tips</h5>
+                <h2 class="card-text">Welcome to Our Travel blog</h2>
+                <p class="card-text">Welcome to the India for Beginners travel blog. It’s been a while since I started a
+                    new travel blog...</p>
+                <a href="#" class="text-dark fw-bold text-decoration-none">READ MORE <span>&rarr;</span></a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="{{ url_for('static', filename='hawamahel.png') }}" height="290px" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">India Tours</h5>
+                <h2 class="card-text">Five-star Golden Tour Review!</h2>
+                <p class="card-text">Our guests visited India’s Golden Triangle with us and wrote a five-star review...</p>
+                <a href="#" class="text-dark fw-bold text-decoration-none">READ MORE <span>&rarr;</span></a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://indiaforbeginners.com/wp-content/uploads/2024/11/Exterior-tent-1.jpg"
+                class="post-top-featured wp-post-image" alt="" height="290px">
+            <div class="card-body">
+                <h5 class="card-title">India Tours</h5>
+                <h2 class="card-text">Maha Kumbh Mela 2025</h2>
+                <p class="card-text">Come with India for Beginners to the Maha Kumbh Mela...</p>
+                <a href="#" class="text-dark fw-bold text-decoration-none">READ MORE <span>&rarr;</span></a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="{{ url_for('static', filename='Indian-rupees-money-7659421_1280.jpg') }}" height="290px"
+                class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">India Travel Tips</h5>
+                <h2 class="card-text">How to pay as a foreigner in India</h2>
+                <p class="card-text">India can be tricky for foreigners to navigate. Here’s what you need to know...</p>
+                <a href="#" class="text-dark fw-bold text-decoration-none">READ MORE <span>&rarr;</span></a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="{{ url_for('static', filename='Kerala-by-Nature-2.jpg') }}" height="290px"
+                class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">India Tours</h5>
+                <h2 class="card-text">Announcing 2024–25 Season</h2>
+                <p class="card-text">India for Beginners is proud to announce our new season of tours featuring Kerala...</p>
+                <a href="#" class="text-dark fw-bold text-decoration-none">READ MORE <span>&rarr;</span></a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="{{ url_for('static', filename='Humayuns-Tomb-2.jpg') }}" height="290px" class="card-img-top"
+                alt="...">
+            <div class="card-body">
+                <h5 class="card-title">India Tours</h5>
+                <h2 class="card-text">Delhi tours with Loven</h2>
+                <p class="card-text">Announcing our I Love Delhi tours to showcase a great city...</p>
+                <a href="#" class="text-dark fw-bold text-decoration-none">READ MORE <span>&rarr;</span></a>
+            </div>
+        </div>
+
+        <div class="card" id="card1">
+            <img src="{{ url_for('static', filename='TAMU-Taj-Mahal.jpg') }}" height="290px" class="card-img-top"
+                alt="...">
+            <div class="card-body">
+                <h5 class="card-title">India Tours</h5>
+                <h2 class="card-text">Study Abroad in India with us</h2>
+                <p class="card-text">In March 2024, 14 students and 3 faculty from Texas A&M visited India...</p>
+                <a href="#" class="text-dark fw-bold text-decoration-none">READ MORE <span>&rarr;</span></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <section class="footer">
+        <div class="container">
+            <footer class="py-5">
+                <div class="row">
+                    <div class="col-2">
+                        <h5>Section</h5>
+                        <ul class="nav flex-column">
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-2">
+                        <h5>Section</h5>
+                        <ul class="nav flex-column">
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-2">
+                        <h5>Section</h5>
+                        <ul class="nav flex-column">
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-4 offset-1">
+                        <form>
+                            <h5>Subscribe to our newsletter</h5>
+                            <p>Monthly digest of whats new and exciting from us.</p>
+                            <div class="d-flex w-100 gap-2">
+                                <label for="newsletter1" class="visually-hidden">Email address</label>
+                                <input id="newsletter1" type="text" class="form-control" placeholder="Email address"
+                                    fdprocessedid="i29t8e">
+                                <button class="btn btn-primary" type="button" fdprocessedid="mlp91t">Subscribe</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-between py-4 my-4 border-top">
+                    <p>© 2021 Company, Inc. All rights reserved.</p>
+                    <ul class="list-unstyled d-flex">
+                        <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24">
+                                    <use xlink:href="#twitter"></use>
+                                </svg></a></li>
+                        <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24">
+                                    <use xlink:href="#instagram"></use>
+                                </svg></a></li>
+                        <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24">
+                                    <use xlink:href="#facebook"></use>
+                                </svg></a></li>
+                    </ul>
+                </div>
+            </footer>
+        </div>
+    </section>
+
+    
+  
+
+
+    <!-- Bootstrap Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
