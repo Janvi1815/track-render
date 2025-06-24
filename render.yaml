@@ -2,8 +2,6 @@ services:
   - type: web
     name: track-with-render
     env: python
-    plan: free
-    buildCommand: ""
+    buildCommand: pip install -r requirements.txt
     startCommand: gunicorn main:app
-    runtime: python
-    region: oregon
+    autoDeploy: true
